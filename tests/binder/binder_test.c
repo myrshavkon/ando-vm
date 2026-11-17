@@ -94,7 +94,8 @@ static int run_server(void)
     void *mapping;
     int fd = open_binder(&mapping);
 
-    if (ioctl(fd, BINDER_SET_CONTEXT_MGR, NULL) < 0)
+    int32_t context_mgr = 0;
+    if (ioctl(fd, BINDER_SET_CONTEXT_MGR, &context_mgr) < 0)
         fail("Could not become Binder context manager");
 
     uint32_t enter_looper = BC_ENTER_LOOPER;
