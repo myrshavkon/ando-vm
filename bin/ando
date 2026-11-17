@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PROJECT_DIR="$(dirname "$(dirname "$(readlink -f "$0")")")"
+
+export PYTHONPATH="$PROJECT_DIR/src${PYTHONPATH:+:$PYTHONPATH}"
+
+exec python "$PROJECT_DIR/src/ando/cli.py" "$@"
